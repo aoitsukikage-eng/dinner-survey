@@ -149,29 +149,40 @@ h3 {
 /* Mobile Optimization */
 @media (max-width: 640px) {
 
-    /* Force calendar columns to stay side-by-side and scrollable */
+    /* Force calendar columns to stay side-by-side and FIT the screen */
     div[data-testid="stHorizontalBlock"] {
         flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        white-space: nowrap !important;
-        padding-bottom: 10px;
-        /* Space for scrollbar */
+        overflow-x: hidden !important;
+        /* Disable scrolling */
+        gap: 2px !important;
+        /* Reduce gap between columns */
     }
 
-    /* Ensure columns have a minimum width so they don't squish */
+    /* Force columns to shrink to fit */
     div[data-testid="column"] {
-        flex: 0 0 auto !important;
-        min-width: 50px !important;
-        width: 14% !important;
+        flex: 1 1 0% !important;
+        /* Distribute space equally */
+        min-width: 0 !important;
+        /* Allow shrinking below content size */
+        width: auto !important;
+        padding: 0 !important;
+        /* Remove padding to save space */
     }
 
-    /* Hide scrollbar for cleaner look but keep functionality */
-    div[data-testid="stHorizontalBlock"]::-webkit-scrollbar {
-        height: 4px;
+    /* Shrink buttons to fit small screens */
+    .calendar-day-btn button {
+        height: 40px !important;
+        /* Smaller height */
+        padding: 0 !important;
+        /* Remove padding */
+        font-size: 0.85rem !important;
+        /* Smaller text */
+        border-radius: 8px !important;
+        min-height: auto !important;
     }
 
-    div[data-testid="stHorizontalBlock"]::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 4px;
+    /* Adjust header text size on mobile */
+    h3 {
+        font-size: 1.2rem !important;
     }
 }
