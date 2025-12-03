@@ -146,43 +146,50 @@ h3 {
     transition: all 0.2s ease;
 }
 
-/* Mobile Optimization */
+/* Mobile Optimization - V2 (Force Fit) */
 @media (max-width: 640px) {
 
-    /* Force calendar columns to stay side-by-side and FIT the screen */
+    /* Force calendar columns to stay side-by-side */
     div[data-testid="stHorizontalBlock"] {
+        flex-direction: row !important;
         flex-wrap: nowrap !important;
         overflow-x: hidden !important;
-        /* Disable scrolling */
-        gap: 2px !important;
-        /* Reduce gap between columns */
+        gap: 1px !important;
+        /* Tiny gap */
+        width: 100% !important;
     }
 
-    /* Force columns to shrink to fit */
+    /* Target each column - Force 1/7th width */
     div[data-testid="column"] {
-        flex: 1 1 0% !important;
-        /* Distribute space equally */
-        min-width: 0 !important;
-        /* Allow shrinking below content size */
-        width: auto !important;
+        flex: 1 1 auto !important;
+        width: 14.28% !important;
+        /* 100% / 7 */
+        min-width: 0px !important;
+        /* CRITICAL: Allow shrinking */
+        max-width: 14.28% !important;
         padding: 0 !important;
-        /* Remove padding to save space */
+        margin: 0 !important;
     }
 
-    /* Shrink buttons to fit small screens */
+    /* Target the button inside */
     .calendar-day-btn button {
-        height: 40px !important;
-        /* Smaller height */
-        padding: 0 !important;
-        /* Remove padding */
-        font-size: 0.85rem !important;
-        /* Smaller text */
-        border-radius: 8px !important;
-        min-height: auto !important;
+        padding: 0px !important;
+        height: 38px !important;
+        min-height: 0px !important;
+        font-size: 12px !important;
+        line-height: 1 !important;
+        border-radius: 6px !important;
+    }
+
+    /* Hide the text inside if it's too long */
+    .calendar-day-btn button p {
+        font-size: 12px !important;
     }
 
     /* Adjust header text size on mobile */
     h3 {
-        font-size: 1.2rem !important;
+        font-size: 1.1rem !important;
     }
 }
+
+```
