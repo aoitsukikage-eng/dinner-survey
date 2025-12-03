@@ -145,3 +145,33 @@ h3 {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     transition: all 0.2s ease;
 }
+
+/* Mobile Optimization */
+@media (max-width: 640px) {
+
+    /* Force calendar columns to stay side-by-side and scrollable */
+    div[data-testid="stHorizontalBlock"] {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        padding-bottom: 10px;
+        /* Space for scrollbar */
+    }
+
+    /* Ensure columns have a minimum width so they don't squish */
+    div[data-testid="column"] {
+        flex: 0 0 auto !important;
+        min-width: 50px !important;
+        width: 14% !important;
+    }
+
+    /* Hide scrollbar for cleaner look but keep functionality */
+    div[data-testid="stHorizontalBlock"]::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    div[data-testid="stHorizontalBlock"]::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+    }
+}
